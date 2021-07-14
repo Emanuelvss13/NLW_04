@@ -37,6 +37,12 @@ export const Home = () => {
       return
     }
 
+    if(roomRef.val().endedAt){
+      alert('Room already closed.')
+      setRoomCode('')
+      return
+    }
+
     history.push(`/rooms/${roomCode}`)
   }
 
@@ -58,7 +64,7 @@ export const Home = () => {
           <form onSubmit={handleJoinRoom} >
             <input 
             type="text" 
-            placeholder="Digite o código da sala" 
+            placeholder="Digite o código da sala"
             onChange={({target}) => setRoomCode(target.value)}
             />
             <Button type="submit">Entrar na sala</Button>
