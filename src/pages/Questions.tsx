@@ -9,14 +9,23 @@ type QuestionsProps = {
         avatar: string
     }
     children?: ReactNode
+    isAnswered?: boolean
+    isHighlighted?: boolean
 }
 
 
 
-function Questions({content, author, children}: QuestionsProps) {
+function Questions(
+    {
+    content,
+    author,
+    children,
+    isAnswered = false,
+    isHighlighted = false
+    }: QuestionsProps) {
     return (
         <div>
-            <div className="question">
+            <div className={`question ${isAnswered ? 'answered': ''} ${isHighlighted && !isAnswered ? 'highlighted': ''}`}>
                 <p>{content}</p>
                 <footer>
                     <div className="user-info">
